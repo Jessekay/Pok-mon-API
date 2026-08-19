@@ -1,10 +1,15 @@
-fetch("https://pokeapi.co/api/v2/pokemon/spongebob")
-.then(response => {
-  if(!response.ok) {
-    throw new Error('Could not fetch the resource')
-  }
+fetchData();
+async function fetchData() {
+  try {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
 
-  return response.json();
-})
-.then((data) => console.log(data.name))
-.catch(error => console.error(error))
+    if(!response.ok) {
+      throw new error('Could not fetch the resource');
+    }
+    const data = await response.json();
+    console.log(data);
+    
+  } catch (error) {
+    console.error(error)
+  }
+}
